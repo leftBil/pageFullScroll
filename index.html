@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单页全屏滚动</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="slide">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<div class="box">
+    <ul>
+        <li class="item1">1</li>
+        <li class="item2">2</li>
+        <li class="item3">3</li>
+        <li class="item4">4</li>
+        <li class="item5">5</li>
+    </ul>
+</div>
+
+<script src="js/jquery-1.12.2.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script>
+
+    var crtPage = 0;
+
+    $(document).mousewheel(function (e, delta) {
+        //delta为1代表向上滚动，为-1代表向下滚动
+        if (delta === 1) {
+            if (crtPage > 0) {
+                crtPage--;
+                $(".box ul").animate({"top": -crtPage * 100 + "%"}, 500);
+            }
+        }
+        if (delta === -1) {
+            if (crtPage < 4) {
+                crtPage++;
+                $(".box ul").animate({"top": -crtPage * 100 + "%"}, 500);
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
